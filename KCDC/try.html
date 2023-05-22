@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Using Flatpickr</title>
+    <!--  Flatpicker Styles  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/themes/dark.css"
+    />
+  </head>
+  <body>
+    <input id="date1" placeholder="MM/DD/YYYY" data-input />
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--  Flatpickr  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.js"></script>
+    <script>
+		
+      $("#date1").flatpickr({
+        enableTime: false,
+        dateFormat: "m-d-Y",
+        disable: [
+          function (date) {
+            return date.getDay() === 0 || date.getDay() === 6; // disable weekends
+          },
+        ],
+        locale: {
+          firstDayOfWeek: 1, // set start day of week to Monday
+        },
+        minDate: "today", // prevent selection of past dates
+      });
+    </script>
+  </body>
