@@ -45,21 +45,51 @@ function total_shift()
     $sql = "SELECT * FROM `total_shift`";
     return $conn->query($sql);
 }
-
+//day
 function get_current_day()
 {
     global $conn;
     $sql = "SELECT DAYNAME(CURRENT_DATE()) as 'day' ;";
     return $conn->query($sql);
 }
-
+//month
+function get_current_month()
+{
+    global $conn;
+    $sql = "SELECT MONTHNAME(CURRENT_DATE())  as 'month' ;";
+    return $conn->query($sql);
+}
+function get_current_year()
+{
+    global $conn;
+    $sql = "SELECT MONTHNAME(CURRENT_DATE())  as 'month' ;";
+    return $conn->query($sql);
+}
+//day
 function get_all_patients($preferred_date)
 {
     global $conn;
-    $sql = "SELECT * FROM `shifts_schedule` WHERE `preferred_date` = '$preferred_date' ";
+    $today = date("Y-m-d");
+    $sql = "SELECT * FROM `shifts_schedule` WHERE `preferred_date` = '$today' ";
     return $conn->query($sql);
 }
 
+//month
+function get_all_patientss($preferred_dates)
+{
+    global $conn;
+    // $today = date("Y-m-d");
+    $sql = "SELECT * FROM shifts_schedule WHERE MONTH(preferred_date) = MONTH(CURRENT_DATE) AND YEAR(preferred_date) = YEAR(CURDATE())";
+    return $conn->query($sql);
+}
+//month
+function get_all_patientsss($preferred_dates)
+{
+    global $conn;
+    // $today = date("Y-m-d");
+    $sql = "SELECT * FROM shifts_schedule WHERE YEAR(preferred_date) = YEAR(CURRENT_DATE)";
+    return $conn->query($sql);
+}
 // RETRIEVED DATA
 function get_doctors_by_day($day)
 {
@@ -247,7 +277,7 @@ function resched_shift($shiftID, $shift, $preferred_date)
     global $conn;
     $sql = "UPDATE `shifts_schedule` SET `shift`= ?, `preferred_date` = ? , `start_datetime` = ? WHERE `shift_id` = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $shift, $preferred_date, $preferred_date, $shiftID);
+    $stmt->bind_param("ssss", $shift, $preferred_date, $preferred_date, $shiftID);
     return $stmt->execute();
 }
 

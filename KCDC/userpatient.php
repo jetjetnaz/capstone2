@@ -205,16 +205,32 @@ $income = '';
         <div class="modal-body">
           <form>
             <div class="mb-3">
-              <!-- <label for="preferred_date" class="form-label">Select Preferred date</label> -->
-              <!-- <input type="date" name="preferred_dates" id="preferred_dates" class="form-control" onchange="check_schedule()"> -->
-              <select name="" id="preferred_dates" class="form-select" onchange="check_schedule()">
+              <label for="preferred_date" class="form-label">Select Preferred date</label>
+              <input type="date" name="preferred_dates" id="preferred_dates" class="form-control" onchange="check_schedule()">
+              <script>
+                // Get today's date
+                var today = new Date().toISOString().split('T')[0];
+
+                // Set the minimum date of the input field to today
+                document.getElementById("preferred_dates").setAttribute("min", today);
+              </script>
+              <script>
+                function disableSundays(event) {
+                  const selectedDate = new Date(event.target.value);
+                  const dayOfWeek = selectedDate.getDay();
+                  if (dayOfWeek === 0) { // Sunday is day 0
+                    event.preventDefault();
+                  }
+                }
+              </script>
+              <!-- <select name="" id="preferred_dates" class="form-select" onchange="check_schedule()">
                 <option value="MONDAY">MONDAY</option>
                 <option value="TUESDAY">TUESDAY</option>
                 <option value="WEDNESDAY">WEDNESDAY</option>
                 <option value="THURSDAY">THURSDAY</option>
                 <option value="FRIDAY">FRIDAY</option>
                 <option value="SATURDAY">SATURDAY</option>
-              </select>
+              </select> -->
             </div>
 
             <div class="mb-3">
@@ -461,7 +477,7 @@ $income = '';
   <div class="wrapper">
     <!-- Navbar -->
     <?php include './config/header.php';
-  include './userconfig/usersidebar.php';?>
+    include './userconfig/usersidebar.php'; ?>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -701,7 +717,7 @@ $income = '';
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
+          confirmButtonText: 'Yes'
         }).then((result) => {
           if (result.isConfirmed) {
             $("#update_patient").modal("hide");

@@ -87,19 +87,10 @@ if (!(isset($_SESSION['user_id']))) {
           </a>
         </li>
        
-        <li class="nav-item" id="mnu_patients">
-          <a href="#" class="bg-gray nav-link">
-            <i class="nav-icon fas fa-user-injured"></i>
-            <p>
-              <i class="fas "></i>
-              Patients
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
+          
 
             <li class="nav-item">
-              <a href="logout.php" class="nav-link">
+              <a href="logout.php" class="bg-gray nav-link">
                 <i class="nav-icon fa fa-sign-out-alt"></i>
                 <p class="text-orange">
                   Logout
