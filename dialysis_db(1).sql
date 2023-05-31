@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2023 at 01:46 PM
+-- Generation Time: May 23, 2023 at 06:35 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -51,18 +51,30 @@ CREATE TABLE `archives` (
   `patient_relationship_with_patient` varchar(20) NOT NULL,
   `patient_source_funds` varchar(50) NOT NULL,
   `patient_source_income` varchar(50) NOT NULL,
-  `patient_source_assistance` varchar(20) NOT NULL
+  `patient_source_assistance` varchar(20) NOT NULL,
+  `religion` varchar(100) NOT NULL,
+  `best_time` varchar(100) NOT NULL,
+  `how_can_arc` varchar(100) NOT NULL,
+  `comments` text NOT NULL,
+  `active_status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `archives`
 --
 
-INSERT INTO `archives` (`id`, `shiftID`, `shift`, `patient_last_name`, `patient_first_name`, `patient_middle_name`, `patient_age`, `patient_gender`, `patient_date_birth`, `patient_address`, `patient_contact_number`, `patient_barangay_city`, `patient_social_media`, `patient_attending_physician`, `patient_name_of_companion`, `patient_years_of_dialysis_facility`, `patient_frequency_of_treatment`, `patient_preffered_day_treatment`, `patient_hospital_affiliated`, `patient_old_dialysis_facility`, `patient_relationship_with_patient`, `patient_source_funds`, `patient_source_income`, `patient_source_assistance`) VALUES
-(46, '1658793614', 'A', 'awdaw', 'dawdaw', 'dawd', '2', 'awdawdawd', '2023-03-08', 'awdaw', 'dawd', 'awdawdaw', 'dawdawdawd', 'awdaw', 'awdawd', '2', '2', '2023-03-22', 'dawd', 'awdawda', 'awdaw', 'Job(trabaho)', 'Below 10,000', 'PSCO'),
-(48, '3416348122', 'A', 'awdaw', 'dawdaw', 'dawd', '2', 'awdawdawd', '2023-03-08', 'awdaw', 'dawd', 'awdawdaw', 'dawdawdawd', 'awdaw', 'awdawd', '2', '2', '2023-03-10', 'dawd', 'awdawda', 'awdaw', 'Job(trabaho)', 'Below 10,000', 'PSCO'),
-(49, '4997326452', 'A', 'awda', 'wdawd', 'awdawda', '2', 'daw', '2023-03-22', 'awdawda', 'wdaw', 'dawd', 'awdawdawd', 'awd', 'dawdaw', '2', '2', 'SATURDAY', 'da', 'awdawd', 'dawd', 'Job(trabaho)', 'Below 10,000', 'PSCO'),
-(50, '7461784628', 'A', 'awd', 'awdaw', 'daw', '2', 'awdawd', '2023-03-09', 'awdaw', 'dawd', 'awdawd', 'awdawd', 'awd', 'wdaw', '2', '2', 'SATURDAY', 'awdawdawda', 'awdawd', 'dawdawd', 'Job(trabaho)', 'Below 10,000', 'PSCO');
+INSERT INTO `archives` (`id`, `shiftID`, `shift`, `patient_last_name`, `patient_first_name`, `patient_middle_name`, `patient_age`, `patient_gender`, `patient_date_birth`, `patient_address`, `patient_contact_number`, `patient_barangay_city`, `patient_social_media`, `patient_attending_physician`, `patient_name_of_companion`, `patient_years_of_dialysis_facility`, `patient_frequency_of_treatment`, `patient_preffered_day_treatment`, `patient_hospital_affiliated`, `patient_old_dialysis_facility`, `patient_relationship_with_patient`, `patient_source_funds`, `patient_source_income`, `patient_source_assistance`, `religion`, `best_time`, `how_can_arc`, `comments`, `active_status`) VALUES
+(46, '1658793614', 'A', 'awdaw', 'dawdaw', 'dawd', '2', 'awdawdawd', '2023-03-08', 'awdaw', 'dawd', 'awdawdaw', 'dawdawdawd', 'awdaw', 'awdawd', '2', '2', '2023-03-22', 'dawd', 'awdawda', 'awdaw', 'Job(trabaho)', 'Below 10,000', 'PSCO', '', '', '', '', 0),
+(48, '3416348122', 'A', 'awdaw', 'dawdaw', 'dawd', '2', 'awdawdawd', '2023-03-08', 'awdaw', 'dawd', 'awdawdaw', 'dawdawdawd', 'awdaw', 'awdawd', '2', '2', '2023-03-10', 'dawd', 'awdawda', 'awdaw', 'Job(trabaho)', 'Below 10,000', 'PSCO', '', '', '', '', 0),
+(49, '4997326452', 'A', 'awda', 'wdawd', 'awdawda', '2', 'daw', '2023-03-22', 'awdawda', 'wdaw', 'dawd', 'awdawdawd', 'awd', 'dawdaw', '2', '2', 'SATURDAY', 'da', 'awdawd', 'dawd', 'Job(trabaho)', 'Below 10,000', 'PSCO', '', '', '', '', 0),
+(50, '7461784628', 'A', 'awd', 'awdaw', 'daw', '2', 'awdawd', '2023-03-09', 'awdaw', 'dawd', 'awdawd', 'awdawd', 'awd', 'wdaw', '2', '2', 'SATURDAY', 'awdawdawda', 'awdawd', 'dawdawd', 'Job(trabaho)', 'Below 10,000', 'PSCO', '', '', '', '', 0),
+(53, '2229686565', 'A', 'awdawd', 'adawd', 'awdawd', '1', 'awdawd', '2023-05-10', 'awdadw', 'awdadw', 'awdawd', 'adawd', 'awwad', 'awdaw', '1', '1', 'FRIDAY', 'awdad', 'addawd', 'awdad', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'awd', 'awd', '', '', 0),
+(54, '3347573966', 'C', 'rin', 'rin', 'rin', '1', 'm', '0001-01-01', 'rin', 'rin', 'rin', 'rin', 'rin', 'rin', '1', '1', '2023-05-26', 'rin', '1', 'rin', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'rin', 'rin', '', '', 0),
+(55, '3958231368', 'A', 'rin', 'rin', 'rin', '1', 'm', '0001-01-01', 'rin', 'rin', 'rin', 'rin', 'rin', 'rin', '1', '1', '2023-05-25', 'rin', '1', 'rin', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'rin', 'rin', '', '', 0),
+(56, '4175219723', 'A', 'Hermosa', 'Adrian', 'Lumocso', '45', 'Female', '2023-05-23', 'Pangasihan Gingoog City', '09565734704', 'Gingoog City', 'None', 'None', 'Roel Hermosa', '3', '2', '2023-05-24', 'None', 'None', 'Father', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'RC', 'Anytime', '', '', 0),
+(57, '4732947424', 'A', 'Hermosa', 'Adrian', 'Lumocso', '45', 'Female', '2023-05-23', 'Pangasihan Gingoog City', '09565734704', 'Gingoog City', 'None', 'None', 'Roel Hermosa', '3', '2', '2023-05-24', 'None', 'None', 'Father', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'RC', 'Anytime', '', '', 0),
+(58, '4826525468', 'A', 'awd', 'awd', 'daw', '1', 'awd', '2023-05-12', 'awd', 'awd', 'awd', 'awd', 'awd', 'awd', '1', '1', '2023-05-11', 'awd', 'dwa', 'adw', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'awd', 'awd', '', '', 0),
+(59, '5368183451', 'A', 'last', 'ben', 'mid', '20', 'm', '0001-01-01', 'add', 'contac', 'barang', 'social', 'attend', 'compa', '1', '1', '2023-05-30', 'hosp', 'facility', 'relation', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'reli', 'call', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -168,11 +180,18 @@ CREATE TABLE `shifts_schedule` (
 --
 
 INSERT INTO `shifts_schedule` (`id`, `shift_id`, `preferred_date`, `shift`, `title`, `description`, `start_datetime`) VALUES
-(176, '2229686565', '2023-05-10', 'A', 'awd', '2229686565', '2023-05-10'),
-(180, '4826525468', '2023-05-11', 'A', 'awd', '4826525468', '2023-05-11'),
 (181, '7752612112', '2023-05-11', 'A', 'awd', '7752612112', '2023-05-11'),
 (182, '5275592768', '2023-05-11', 'B', 'awdawd', '5275592768', '2023-05-11'),
-(184, '5383636816', '2023-05-22', 'A', 'awda', '5383636816', '2023-05-22');
+(184, '5383636816', '2023-05-31', 'A', 'awda', '5383636816', '2023-05-31'),
+(185, '8916424133', '2023-05-25', 'A', 'Calibod', '8916424133', '2023-05-25'),
+(188, '5548763438', '2023-05-26', 'A', 'Hermosa', '5548763438', '2023-05-26'),
+(189, '5367675559', '2023-05-25', 'A', 'ben', '5367675559', '2023-05-25'),
+(190, '5665218539', '2023-05-26', 'B', 'ben', '5665218539', '2023-05-26'),
+(191, '5954852636', '2023-05-25', 'A', 'ben', '5954852636', '2023-05-25'),
+(192, '9374469953', '2023-05-26', 'B', 'ben', '9374469953', '2023-05-26'),
+(196, '6519935455', '2023-05-31', 'A', 'last', '6519935455', '2023-05-31'),
+(197, '1765623977', '2023-05-24', 'A', 'last', '1765623977', '2023-05-24'),
+(198, '6421766431', '2023-05-28', 'A', 'last', '6421766431', '2023-05-28');
 
 -- --------------------------------------------------------
 
@@ -241,11 +260,18 @@ CREATE TABLE `tbl_patient` (
 --
 
 INSERT INTO `tbl_patient` (`id`, `shiftID`, `shift`, `patient_last_name`, `patient_first_name`, `activestatus`, `patient_middle_name`, `patient_age`, `patient_gender`, `patient_date_birth`, `patient_address`, `patient_contact_number`, `patient_barangay_city`, `patient_social_media`, `patient_attending_physician`, `patient_name_of_companion`, `patient_years_of_dialysis_facility`, `patient_frequency_of_treatment`, `patient_preffered_day_treatment`, `patient_hospital_affiliated`, `patient_old_dialysis_facility`, `patient_relationship_with_patient`, `patient_source_funds`, `patient_source_income`, `patient_source_assistance`, `religion`, `best_time`, `how_can_arc`, `comments`, `active_status`) VALUES
-(119, '2229686565', 'A', 'awdawd', 'adawd', 1, 'awdawd', '1', 'awdawd', '2023-05-10', 'awdadw', 'awdadw', 'awdawd', 'adawd', 'awwad', 'awdaw', '1', '1', '2023-05-10', 'awdad', 'addawd', 'awdad', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'awd', 'awd', '', '', 1),
-(120, '4826525468', 'A', 'awd', 'awd', 1, 'daw', '1', 'awd', '2023-05-12', 'awd', 'awd', 'awd', 'awd', 'awd', 'awd', '1', '1', '2023-05-11', 'awd', 'dwa', 'adw', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'awd', 'awd', '', '', 1),
 (121, '7752612112', 'A', 'awd', 'awd', 1, 'daw', '1', 'awd', '2023-05-12', 'awd', 'awd', 'awd', 'awd', 'awd', 'awd', '1', '1', '2023-05-11', 'awd', 'dwa', 'adw', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'awd', 'awd', '', '', 1),
 (122, '5275592768', 'B', 'awd', 'awd', 1, 'awd', '1', 'awd', '2023-05-11', 'awd', 'awd', 'awd', 'awd', 'ad', 'awd', '1', '3', '2023-05-11', 'awd', 'awda', 'awd', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'awd', 'dw', '', '', 1),
-(123, '5383636816', 'A', 'awda', 'awd', 1, 'awd', '1', 'awd', '2023-05-22', 'awd', '09226122187', 'cdo', 'awd', 'awd', 'awd', '1', '1', '2023-05-22', 'awd', 'awd', 'awd', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'awd', 'awd', '', '', 1);
+(123, '5383636816', 'A', 'awda', 'awd', 1, 'awd', '1', 'awd', '2023-05-22', 'awd', '09226122187', 'cdo', 'awd', 'awd', 'awd', '1', '1', '2023-05-22', 'awd', 'awd', 'awd', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'awd', 'awd', '', '', 1),
+(124, '8916424133', 'A', 'Calibod', 'Johnny ', 1, 'Ordaniza', '23', 'Male', '2023-05-23', 'Pangasihan Gingoog City', '09263099612', 'Carmen, Cagayan De Oro City', 'None', 'None', 'Johnster Calibod', '3', '2', 'FRIDAY', 'None', 'None', 'Father', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'RC', 'Anytime', '', '', 1),
+(127, '5548763438', 'A', 'Hermosa', 'Adrian', 1, 'Lumocso', '45', 'Female', '2023-05-23', 'Pangasihan Gingoog City', '09565734704', 'Gingoog City', 'None', 'None', 'Roel Hermosa', '3', '2', '2023-05-26', 'None', 'None', 'Father', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'RC', 'Anytime', '', '', 1),
+(128, '5367675559', 'A', 'ben', 'ben', 1, 'ben', '23', 'ben', '2412-01-13', 'ben', 'ben', 'ben', 'ben', 'ben', 'ben', '5', '1', '2023-05-25', 'ben', 'eben', 'ben', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'ben', 'en', '', '', 1),
+(129, '5665218539', 'B', 'ben', 'ben', 1, 'ben', '23', 'ben', '2412-01-13', 'ben', 'ben', 'ben', 'ben', 'ben', 'ben', '5', '1', '2023-05-26', 'ben', 'eben', 'ben', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'ben', 'en', '', '', 1),
+(130, '5954852636', 'A', 'ben', 'ben', 1, 'ben', '20', 'ben', '0001-01-01', 'ben', 'bneb', 'ben', 'ben', 'ben', 'ben', '1', '1', '2023-05-25', 'ben', 'ben', 'benb', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'ben', 'ben', '', '', 1),
+(131, '9374469953', 'B', 'ben', 'ben', 1, 'ben', '20', 'ben', '0001-01-01', 'ben', 'bneb', 'ben', 'ben', 'ben', 'ben', '1', '1', '2023-05-26', 'ben', 'ben', 'benb', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'ben', 'ben', '', '', 1),
+(135, '6519935455', 'A', 'last', 'ben', 1, 'mid', '20', 'm', '0001-01-01', 'add', 'contac', 'barang', 'social', 'attend', 'compa', '1', '1', '2023-05-31', 'hosp', 'facility', 'relation', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'reli', 'call', '', '', 1),
+(136, '1765623977', 'A', 'last', 'ben', 1, 'mid', '20', 'm', '0001-01-01', 'add', 'contac', 'barang', 'social', 'attend', 'compa', '1', '1', '2023-05-24', 'hosp', 'facility', 'relation', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'reli', 'call', '', '', 1),
+(137, '6421766431', 'A', 'last', 'ben', 1, 'mid', '20', 'm', '0001-01-01', 'add', 'contac', 'barang', 'social', 'attend', 'compa', '1', '1', '2023-05-28', 'hosp', 'facility', 'relation', 'Job(trabaho)', 'Below 10,000', 'PSCO', 'reli', 'call', '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -373,7 +399,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `archives`
 --
 ALTER TABLE `archives`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `doctors`
@@ -397,7 +423,7 @@ ALTER TABLE `schedule_list`
 -- AUTO_INCREMENT for table `shifts_schedule`
 --
 ALTER TABLE `shifts_schedule`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
 
 --
 -- AUTO_INCREMENT for table `tbldates`
@@ -409,13 +435,13 @@ ALTER TABLE `tbldates`
 -- AUTO_INCREMENT for table `tbl_patient`
 --
 ALTER TABLE `tbl_patient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT for table `temp_shift_sched_holder`
 --
 ALTER TABLE `temp_shift_sched_holder`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `users`
