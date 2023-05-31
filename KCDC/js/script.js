@@ -5,13 +5,24 @@ $(function () {
   if (!!scheds) {
     Object.keys(scheds).map((k) => {
       var row = scheds[k];
+      var color = getRandomColor();
       events.push({
         id: row.id,
-        title:"Patient: "+row.title,
+        title: "Patient:" + row.title ,
         start: row.start_datetime,
-    
+        color: color,
       });
     });
+  }
+  function getRandomColor() {
+    var letters = "0123456789ABCDEF";
+    var color = "#";
+
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+
+    return color;
   }
   var date = new Date();
   var d = date.getDate(),
@@ -24,6 +35,7 @@ $(function () {
       right: "dayGridMonth,dayGridWeek,list",
       center: "title",
     },
+    hiddenDays: [0],
     selectable: true,
     themeSystem: "bootstrap",
     //Random default events
@@ -33,7 +45,7 @@ $(function () {
       var id = info.event.id;
       if (!!scheds[id]) {
         _details.find("#title").text(scheds[id].title);
-        _details.find("#description").text(scheds[id].shift);
+        _details.find("#description").text(scheds[id].description);
         _details.find("#start").text(scheds[id].sdate);
         _details.find("#edit,#delete").attr("data-id", id);
         _details.modal("show");

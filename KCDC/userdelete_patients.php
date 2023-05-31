@@ -1,4 +1,4 @@
- <?php
+<?php
 include "new_connection.php";
 include "functions.php";
 

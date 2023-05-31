@@ -73,7 +73,7 @@ function getSemesterSummer()
                         <br><br>
 
                         <input type="date" id="myDate" name="myDate" class="form-control" style="width:15%">
-                    
+
                         </select>
 
                         <script>
@@ -135,7 +135,7 @@ function getSemesterSummer()
                             };
                         </script>
                         <div class="row table-responsive">
-                            <table id="datatablesSimples" class="table table-hover table-striped-columns table-border dataTable  dtr-inline tbl_padding" role="grid" aria-describedby="all_patients_info"></table>
+                            <table id="datatablesSimples"class="table table-hover table-striped-columns table-border dataTable  dtr-inline tbl_padding" role="grid" aria-describedby="all_patients_info"></table>
                         </div>
                     </div>
                 </div>

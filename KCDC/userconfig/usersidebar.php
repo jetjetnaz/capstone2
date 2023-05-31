@@ -54,27 +54,12 @@ if (!(isset($_SESSION['user_id']))) {
           </a>
         </li>
 
-        <li class="nav-item" id="mnu_users">
-          <a href="patientsched.php" class="bg-gray nav-link">
-            <i class="nav-icon fa fa-calendar"></i>
-            <p>
-              Patient Schedule
-            </p>
-          </a>
-        </li>
+        
         <li class="nav-item" id="mnu_users">
           <a href="userpatient.php" class="bg-gray nav-link">
             <i class="nav-icon fas fa-user-injured"></i>
             <p>
               Patients
-            </p>
-          </a>
-        </li>
-        <li class="nav-item" id="mnu_users">
-          <a href="userarchive.php" class="bg-gray nav-link">
-            <i class=' nav-icon fa fa-archive'></i>
-            <p>
-              Archives
             </p>
           </a>
         </li>
@@ -86,11 +71,28 @@ if (!(isset($_SESSION['user_id']))) {
             </p>
           </a>
         </li>
+        <li class="nav-item" id="mnu_users">
+          <a href="userarchive.php" class="bg-gray nav-link">
+            <i class=' nav-icon fa fa-archive'></i>
+            <p>
+              Archives
+            </p>
+          </a>
+        </li>
        
-          
+        <li class="nav-item" id="mnu_patients">
+          <a href="#" class="bg-gray nav-link">
+            <i class="nav-icon fas fa-user-injured"></i>
+            <p>
+              <i class="fas "></i>
+              Logout
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
 
             <li class="nav-item">
-              <a href="logout.php" class="bg-gray nav-link">
+              <a href="logout.php" class="nav-link">
                 <i class="nav-icon fa fa-sign-out-alt"></i>
                 <p class="text-orange">
                   Logout

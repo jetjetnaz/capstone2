@@ -92,17 +92,20 @@ while ($row = $total_patient_today->fetch_assoc()) {
 
 
         <!-- Main content -->
-        <div class="container py-5" id="page-container">
-            <div class="row">
+        <div class="container py-8" id="page-container">
+            <br>
+            <button class="form-control" style="width:15%">See Date</button>
+            <div class="center">
+
                 <div class="col-md-9">
                     <div id="calendar"></div>
                 </div>
-                <div class="col-md-3">
-                    <div class="cardt rounded-0 shadow">
+                <!-- <div class="col-md-3"> -->
+                    <!-- <div class="cardt rounded-0 shadow">
                         <div class="card-header bg-gradient bg-primary text-light">
                             <h5 class="card-title">Schedule Form</h5>
-                        </div>
-                        <div class="card-body">
+                        </div> -->
+                        <!-- <div class="card-body">
                             <div class="container-fluid">
                                 <form action="save_schedule.php" method="post" id="schedule-form">
                                     <input type="hidden" name="id" value="">
@@ -111,11 +114,11 @@ while ($row = $total_patient_today->fetch_assoc()) {
                                         <input type="text" class="form-control form-control-sm rounded-0" name="title" id="title" required>
                                     </div>
                                     <div class="form-group mb-2">
-                                        <label for="description" class="control-label">Patient ID</label>
+                                        <label for="description" class="control-label">Shift</label>
                                         <textarea rows="3" class="form-control form-control-sm rounded-0" name="description" id="description" required></textarea>
                                     </div>
                                     <div class="form-group mb-2">
-                                        <label for="start_datetime" class="control-label">Schedule Date</label>
+                                        <label for="start_datetime" class="control-label">Schedule</label>
                                         <input type="date" class="form-control form-control-sm rounded-0" name="start_datetime" id="start_datetime" required>
                                         <script>
                                             // Get today's date
@@ -137,7 +140,7 @@ while ($row = $total_patient_today->fetch_assoc()) {
 
                                 </form>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="card-footer">
                             <div class="text-center">
                                 <button class="btn btn-primary btn-sm rounded-0" type="submit" form="schedule-form"><i class="fa fa-save"></i> Save</button>
@@ -159,11 +162,11 @@ while ($row = $total_patient_today->fetch_assoc()) {
                     <div class="modal-body rounded-0">
                         <div class="container-fluid">
                             <dl>
-                                <dt class="text-muted">Patient Name:</dt>
+                                <dt class="text-muted">Patient</dt>
                                 <dd id="title" class="fw-bold fs-4"></dd>
-                                <dt class="text-muted">Patient Shift:</dt>
+                                <dt class="text-muted">Shift</dt>
                                 <dd id="description" class=""></dd>
-                                <dt class="text-muted">Schedule Date:</dt>
+                                <dt class="text-muted">Schedule</dt>
                                 <dd id="start" class=""></dd>
 
 
@@ -186,14 +189,13 @@ while ($row = $total_patient_today->fetch_assoc()) {
         $schedules = $conn->query("SELECT * FROM `shifts_schedule`");
         $sched_res = [];
         foreach ($schedules->fetch_all(MYSQLI_ASSOC) as $row) {
-            $row['sdate'] = date("F d, Y ", strtotime($row['preferred_date']));
+            $row['sdate'] = date("F d, Y", strtotime($row['preferred_date']));
         ?> <script>
                 var dateString = "<?php echo $row['sdate'] ?>";
                 console.log("Formatted Date: " + dateString);
             </script>
         <?php
             $sched_res[$row['id']] = $row;
-         
         }
 
         ?>

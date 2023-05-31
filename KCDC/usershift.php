@@ -110,13 +110,50 @@ $shift_limit = $shift_limit->fetch_assoc();
                     </div>
                 </div><!-- /.container-fluid -->
             </section>
+            <?php
+
+
+            $today = new DateTime();
+            $dates = array();
+
+            // Find the next occurrences of each weekday (Monday to Saturday) from the current day onwards
+            for ($i = 0; $i < 6; $i++) {
+                $dayOfWeek = $today->format('w'); // Get the current day of the week (0-6, where 0 is Sunday)
+
+                // Calculate the number of days to add based on the current day of the week
+                $diff = (8 - $dayOfWeek + $i) % 7;
+
+                // Add the difference to today's date
+                $nextDate = clone $today;
+                $nextDate->modify("+$diff days");
+
+                // Format the date as 'Y-m-d' and add it to the dates array
+                $dates[] = $nextDate->format('Y-m-d');
+            }
+
+            // Assign dates to variables for manual usage
+            $monday = $dates[0];
+            $tuesday = $dates[1];
+            $weds = $dates[2];
+            $thurs = $dates[3];
+            $fri = $dates[4];
+            $sat = $dates[5];
+
+
+            // echo  $monday;
+            // echo  $tuesday;
+            // echo  $weds;
+            // echo  $thurs;
+            // echo  $fri;
+            // echo  $sat;
+            ?>
             <section class="content">
                 <!-- Default box -->
                 <div class="card card-outline card-primary rounded-0 shadow">
                     <div class="card-header">
-                        <h3 class="card-title">Total Patients for all shifts (<?= $total_patients ?>)</h3>
+                        <!-- <h3 class="card-title">Total Patients for all shifts (<?= $total_patients ?>)</h3> -->
                         <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                            <button type="hidden" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
                         </div>
@@ -124,6 +161,8 @@ $shift_limit = $shift_limit->fetch_assoc();
                     <div class="card-body">
                         <div class="row table-responsive">
                             <div id="display_table"></div>
+                            <?php echo "Date: Monday " . $monday . " - Saturday " . $sat . ""; ?>
+                            <br> <br>
                             <table id="all_patients" class="table table-hover table-striped-columns table-border dataTable  dtr-inline tbl_padding" role="grid" aria-describedby="all_patients_info">
                                 <thead>
                                     <tr>
@@ -161,15 +200,19 @@ $shift_limit = $shift_limit->fetch_assoc();
 
                                     <tr>
                                         <!-- SHIFT A -->
-                                        <td class="text-center"> <strong>1ST</strong> </td>
+                                        <td class="text-center"> <strong>SHIFT A</strong> </td>
 
                                         <td>
 
                                             <?php
+
+
+
+
                                             while ($row = $monA->fetch_assoc()) : ?>
                                                 <?php
-                                                if ($row['patient_preffered_day_treatment'] == "MONDAY" && $row['shift'] == "A") {
-                                                    echo  ucfirst($row['patient_last_name']) . " " . ucfirst($row['patient_first_name']) . " " . ucfirst($row['patient_middle_name']) . "<br><br>";
+                                                if ($row['patient_preffered_day_treatment'] ==   $monday && $row['shift'] == "A") {
+                                                    echo ucfirst($row['patient_last_name']) . " " . ucfirst($row['patient_first_name']) . " " . ucfirst($row['patient_middle_name']) . "<br><br>";
                                                 }
                                                 ?>
 
@@ -180,9 +223,11 @@ $shift_limit = $shift_limit->fetch_assoc();
 
                                         <td>
                                             <?php
+
+
                                             while ($row = $tueA->fetch_assoc()) : ?>
                                                 <?php
-                                                if ($row['patient_preffered_day_treatment'] == "TUESDAY" && $row['shift'] == "A") {
+                                                if ($row['patient_preffered_day_treatment'] == $tuesday  && $row['shift'] == "A") {
                                                     echo ucfirst($row['patient_last_name']) . " " . ucfirst($row['patient_first_name']) . " " . ucfirst($row['patient_middle_name']) . "<br><br>";
                                                 }
                                                 ?>
@@ -193,9 +238,10 @@ $shift_limit = $shift_limit->fetch_assoc();
 
                                         <td>
                                             <?php
+
                                             while ($row = $wedA->fetch_assoc()) : ?>
                                                 <?php
-                                                if ($row['patient_preffered_day_treatment'] == "WEDNESDAY" && $row['shift'] == "A") {
+                                                if ($row['patient_preffered_day_treatment'] == $weds && $row['shift'] == "A") {
                                                     echo ucfirst($row['patient_last_name']) . " " . ucfirst($row['patient_first_name']) . " " . ucfirst($row['patient_middle_name']) . "<br><br>";
                                                 }
 
@@ -207,9 +253,10 @@ $shift_limit = $shift_limit->fetch_assoc();
 
                                         <td>
                                             <?php
+
                                             while ($row = $thursA->fetch_assoc()) : ?>
                                                 <?php
-                                                if ($row['patient_preffered_day_treatment'] == "THURSDAY" && $row['shift'] == "A") {
+                                                if ($row['patient_preffered_day_treatment'] ==  $thurs && $row['shift'] == "A") {
                                                     echo ucfirst($row['patient_last_name']) . " " . ucfirst($row['patient_first_name']) . " " . ucfirst($row['patient_middle_name']) . "<br><br>";
                                                 }
                                                 ?>
@@ -217,12 +264,11 @@ $shift_limit = $shift_limit->fetch_assoc();
 
                                             ?>
                                         </td>
-
                                         <td>
                                             <?php
                                             while ($row = $friA->fetch_assoc()) : ?>
                                                 <?php
-                                                if ($row['patient_preffered_day_treatment'] == "FRIDAY" && $row['shift'] == "A") {
+                                                if ($row['patient_preffered_day_treatment'] == $fri && $row['shift'] == "A") {
                                                     echo ucfirst($row['patient_last_name']) . " " . ucfirst($row['patient_first_name']) . " " . ucfirst($row['patient_middle_name']) . "<br><br>";
                                                 }
                                                 ?>
@@ -235,7 +281,7 @@ $shift_limit = $shift_limit->fetch_assoc();
                                             <?php
                                             while ($row = $satA->fetch_assoc()) : ?>
                                                 <?php
-                                                if ($row['patient_preffered_day_treatment'] == "SATURDAY" && $row['shift'] == "A") {
+                                                if ($row['patient_preffered_day_treatment'] == $sat  && $row['shift'] == "A") {
                                                     echo ucfirst($row['patient_last_name']) . " " . ucfirst($row['patient_first_name']) . " " . ucfirst($row['patient_middle_name']) . "<br><br>";
                                                 }
                                                 ?>
@@ -248,12 +294,12 @@ $shift_limit = $shift_limit->fetch_assoc();
                                     </tr>
 
                                     <tr>
-                                        <td class="text-center"><strong>2ND</strong></td>
+                                        <td class="text-center"><strong>SHIFT B</strong></td>
                                         <td>
                                             <?php
                                             while ($row = $monB->fetch_assoc()) : ?>
                                                 <?php
-                                                if ($row['patient_preffered_day_treatment'] == "MONDAY" && $row['shift'] == "B") {
+                                                if ($row['patient_preffered_day_treatment'] ==  $monday && $row['shift'] == "B") {
                                                     echo ucfirst($row['patient_last_name']) . " " . ucfirst($row['patient_first_name']) . " " . ucfirst($row['patient_middle_name']) . "<br><br>";
                                                 }
                                                 ?>
@@ -266,7 +312,7 @@ $shift_limit = $shift_limit->fetch_assoc();
                                             <?php
                                             while ($row = $tueB->fetch_assoc()) : ?>
                                                 <?php
-                                                if ($row['patient_preffered_day_treatment'] == "TUESDAY" && $row['shift'] == "B") {
+                                                if ($row['patient_preffered_day_treatment'] == $tuesday && $row['shift'] == "B") {
                                                     echo ucfirst($row['patient_last_name']) . " " . ucfirst($row['patient_first_name']) . " " . ucfirst($row['patient_middle_name']) . "<br><br>";
                                                 }
                                                 ?>
@@ -279,7 +325,7 @@ $shift_limit = $shift_limit->fetch_assoc();
                                             <?php
                                             while ($row = $wedB->fetch_assoc()) : ?>
                                                 <?php
-                                                if ($row['patient_preffered_day_treatment'] == "WEDNESDAY" && $row['shift'] == "B") {
+                                                if ($row['patient_preffered_day_treatment'] == $weds && $row['shift'] == "B") {
                                                     echo ucfirst($row['patient_last_name']) . " " . ucfirst($row['patient_first_name']) . " " . ucfirst($row['patient_middle_name']) . "<br><br>";
                                                 }
                                                 ?>
@@ -292,7 +338,7 @@ $shift_limit = $shift_limit->fetch_assoc();
                                             <?php
                                             while ($row = $thursB->fetch_assoc()) : ?>
                                                 <?php
-                                                if ($row['patient_preffered_day_treatment'] == "THURSDAY" && $row['shift'] == "B") {
+                                                if ($row['patient_preffered_day_treatment'] == $thurs && $row['shift'] == "B") {
                                                     echo ucfirst($row['patient_last_name']) . " " . ucfirst($row['patient_first_name']) . " " . ucfirst($row['patient_middle_name']) . "<br><br>";
                                                 }
                                                 ?>
@@ -305,7 +351,7 @@ $shift_limit = $shift_limit->fetch_assoc();
                                             <?php
                                             while ($row = $friB->fetch_assoc()) : ?>
                                                 <?php
-                                                if ($row['patient_preffered_day_treatment'] == "FRIDAY" && $row['shift'] == "B") {
+                                                if ($row['patient_preffered_day_treatment'] ==  $fri && $row['shift'] == "B") {
                                                     echo ucfirst($row['patient_last_name']) . " " . ucfirst($row['patient_first_name']) . " " . ucfirst($row['patient_middle_name']) . "<br><br>";
                                                 }
                                                 ?>
@@ -318,7 +364,7 @@ $shift_limit = $shift_limit->fetch_assoc();
                                             <?php
                                             while ($row = $satB->fetch_assoc()) : ?>
                                                 <?php
-                                                if ($row['patient_preffered_day_treatment'] == "SATURDAY" && $row['shift'] == "B") {
+                                                if ($row['patient_preffered_day_treatment'] ==  $sat && $row['shift'] == "B") {
                                                     echo ucfirst($row['patient_last_name']) . " " . ucfirst($row['patient_first_name']) . " " . ucfirst($row['patient_middle_name']) . "<br><br>";
                                                 }
                                                 ?>
@@ -330,12 +376,12 @@ $shift_limit = $shift_limit->fetch_assoc();
                                     </tr>
 
                                     <tr>
-                                        <td class="text-center"><strong>3RD</strong></td>
+                                        <td class="text-center"><strong>SHIFT C</strong></td>
                                         <td>
                                             <?php
                                             while ($row = $monC->fetch_assoc()) : ?>
                                                 <?php
-                                                if ($row['patient_preffered_day_treatment'] == "MONDAY" && $row['shift'] == "C") {
+                                                if ($row['patient_preffered_day_treatment'] ==  $monday && $row['shift'] == "C") {
                                                     echo ucfirst($row['patient_last_name']) . " " . ucfirst($row['patient_first_name']) . " " . ucfirst($row['patient_middle_name']) . "<br><br>";
                                                 }
                                                 ?>
@@ -352,7 +398,7 @@ $shift_limit = $shift_limit->fetch_assoc();
                                             <?php
                                             while ($row = $wedC->fetch_assoc()) : ?>
                                                 <?php
-                                                if ($row['patient_preffered_day_treatment'] == "WEDNESDAY" && $row['shift'] == "C") {
+                                                if ($row['patient_preffered_day_treatment'] ==  $weds && $row['shift'] == "C") {
                                                     echo ucfirst($row['patient_last_name']) . " " . ucfirst($row['patient_first_name']) . " " . ucfirst($row['patient_middle_name']) . "<br><br>";
                                                 }
                                                 ?>
@@ -369,7 +415,7 @@ $shift_limit = $shift_limit->fetch_assoc();
                                             <?php
                                             while ($row = $friC->fetch_assoc()) : ?>
                                                 <?php
-                                                if ($row['patient_preffered_day_treatment'] == "FRIDAY" && $row['shift'] == "C") {
+                                                if ($row['patient_preffered_day_treatment'] ==   $fri && $row['shift'] == "C") {
                                                     echo ucfirst($row['patient_last_name']) . " " . ucfirst($row['patient_first_name']) . " " . ucfirst($row['patient_middle_name']) . "<br><br>";
                                                 }
                                                 ?>
@@ -394,10 +440,10 @@ $shift_limit = $shift_limit->fetch_assoc();
                                         <td><span id="doc6"></span></td>
                                     </tr>
 
-                                    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_doctor_modal">
-                        <i class='bx bxs-edit text-light'></i>
-                      </button>
-                      <strong>Edit button</strong> <br> -->
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_doctor_modal">
+                                        <i class='bx bxs-edit text-light'></i>
+                                    </button>
+                                    <strong>Edit button</strong> <br>   
 
                                     <tr>
                                         <td class="text-center"><strong>Edit button</strong>
